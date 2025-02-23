@@ -1,0 +1,49 @@
+.home-container {
+    .content {
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 100vh;
+        max-height: 100vh;
+        padding: 0 10vw;
+        z-index: 0;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        
+        > div {
+            h1 {
+                font-size: 55px;
+            }
+
+            * {
+                margin: 10px 0;
+            }
+        }
+    }
+    
+    .content:nth-of-type(1) {
+        background-image: url(../../assets/images/img_bg_1-PzvG2r05.jpg);
+        opacity: 1;
+        animation: changeContent 8s linear infinite;
+    }
+    
+    .content:nth-of-type(2) {
+        background-image: url(../../assets/images/img_bg_2-DzCs5o-0.jpg);
+        opacity: 0;
+        animation: changeContent 8s linear 4s infinite;
+    }
+}
+
+@keyframes changeContent {
+    0%, 30% {
+        opacity: 1;
+    }
+    50%, 80% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

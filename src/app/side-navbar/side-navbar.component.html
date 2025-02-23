@@ -1,0 +1,41 @@
+<button
+    *ngIf="IsBarsBtnActive" 
+    (click)="IsBarsBtnActive = false; IsNavbarActive = true"
+    class="position-fixed z-3 start-0 top-0 border-1 border-dark-subtle rounded-2 shadow-sm py-2 px-3 m-2 bg-transparent d-lg-none"
+>
+    <i class="fa-solid fa-bars fs-3 text-dark-emphasis"></i>
+</button>
+<!-- *ngIf="IsNavbarActive" -->
+<nav
+    [ngClass]="{'active': IsNavbarActive, 'inactive': !IsNavbarActive}"
+    class="m-0 position-fixed z-3 col col-md-3 col-xl-2 d-flex align-items-start"
+>
+    <button 
+        (click)="IsBarsBtnActive = true; IsNavbarActive = false"
+        class="position-absolute end-0 bg-transparent border-0 fs-3 p-3 d-lg-none"
+    >
+        X
+    </button>
+    <div class="container-fluid mt-5">
+        <div class="d-flex flex-column align-items-center mt-md-5">
+            <div class="img-cont">
+                <img src="../../assets/images/about-BgAkqdr2.jpg" alt="about" class="w-100">
+            </div>
+            <h3 class="fs-5 mt-4">Jackson Ford</h3>
+            <p class="text-uppercase fw-light">
+                <a routerLink="home" class="text-decoration-none fw-normal">UI/UX Designer</a> in Philippines
+            </p>
+            <ul class="navbar-nav mb-2 mb-lg-0 d-flex flex-column text-center align-items-center">
+                <ng-container *ngFor="let navTab of navTabs; let i = index;">
+                    <li 
+                        (click)="navBtnSelected = i; handleNavItemClk()"
+                        [ngClass]="{'li-active': navBtnSelected === i}"
+                        class="nav-item position-relative" 
+                    >
+                        <a class="nav-link text-uppercase" aria-current="page" [routerLink]="navTab">{{navTab}}</a>
+                    </li>
+                </ng-container>
+            </ul>
+        </div>
+    </div>
+</nav>

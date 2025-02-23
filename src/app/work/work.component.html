@@ -1,0 +1,56 @@
+<div class="work-cont">
+    <h5 class="my-3">MY WORK</h5>
+    <h4 class="my-3">RECENT WORK</h4>
+
+    <div class="btn-group my-4">
+        <ng-container *ngFor="let category of workData | keyvalue; let i = index;">
+            <button 
+                class="bg-transparent mx-3 border-0 p-2 d-flex" 
+                [ngClass]="{'ms-0 ps-0': i === 0, 'btn-active': i === btnSelceted}" 
+                (click)="displayedItems = category.value.data; btnSelceted = i;"
+            >
+                {{category.value.name}}
+            </button>
+        </ng-container>
+    </div>
+
+    <div class="data-cont container-fluid m-0 g-0">
+        <div class="row g-3">
+            <ng-container *ngFor="let item of displayedItems; let i = index;">
+                <div class="col-lg-6" *ngIf="i <= (itemsDisplayedNum - 1);">
+                    <div class="position-relative">
+                        <div style="height: 350px" class="d-flex w-100 img-cont">
+                            <img [src]="item.imgURL" alt="" class="w-100 object-fit-cover">
+                        </div>
+                        <div class="img-data position-absolute top-0 start-0 h-100 w-100 p-5 flex-column justify-content-around">
+                            <div>
+                                <a [href]="item.link" class="text-light text-decoration-underline fs-5">Work 02</a>
+                                <p class="fs-6 text-light mt-3">{{item.title}}</p>
+                            </div>
+                            <div>
+                                <button class="rounded p-1 border-1 border-light px-2 py-1 bg-transparent shadow-sm fs-6 mx-2 text-decoration-underline">
+                                    <i class="fa-solid fa-share-nodes"></i>
+                                </button>
+                                <button class="rounded p-1 border-1 border-light px-2 py-1 bg-transparent shadow-sm fs-6 mx-2 text-decoration-underline">
+                                    <i class="fa-regular fa-heart"></i> {{item.loves}}
+                                </button>
+                                <button class="rounded p-1 border-1 border-light px-2 py-1 bg-transparent shadow-sm fs-6 mx-2 text-decoration-underline">
+                                    <i class="fa-regular fa-eye"></i> {{item.views}}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+
+        <button 
+            class="btn btn-primary mt-5" 
+            (click)="itemsDisplayedNum = displayedItems.length" 
+            [ngClass]="{'d-none': itemsDisplayedNum === displayedItems.length}"
+        >
+            Show More
+        </button>
+    </div>
+
+</div>

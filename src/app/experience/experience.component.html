@@ -1,0 +1,28 @@
+<div class="experience-cont ms-lg-5">
+    <h5 class="my-3">EXPERIENCE</h5>
+    <h4 class="my-3">WORK EXPERIENCE</h4>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="timeline p-0 rounded d-flex flex-column justify-content-around">
+                <ng-container *ngFor="let _ of [].constructor(3);">
+                    <div class="d-flex justify-content-center align-items-center position-relative">
+                        <i class="fa-solid fa-pencil text-white"></i>
+                    </div>
+                </ng-container>
+            </div>
+            <div class="col-10 data-cont">
+                <ng-container *ngFor="let item of experience">
+                    <i class="fa-solid fa-caret-left"></i>
+                    <div class="item-cont shadow-sm py-5 px-5 my-0 rounded">
+                        <div class="p-0 mb-3 d-inline-block">
+                            <h3 class="d-inline-block fs-4 fw-normal">{{item.jobTitle}}</h3>
+                            <h5 class="d-inline-block fs-6 fw-normal text-black-50 ms-3">{{item.dateFrom}} - {{item.dateTo}}</h5>
+                        </div>
+                        <p class="text-black-50">{{item.brief}}</p>
+                        <p class="text-black-50"></p>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>
